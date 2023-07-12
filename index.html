@@ -14,7 +14,7 @@
                 <input id="input" type="text" placeholder="Enter the city name" spellcheck="false"></input>
                 <button id="search" class="fa-solid fa-magnifying-glass"></button>
             </div>
-            <div class="weather">
+            
                 <div class="tempicon">
 
                     <div class="type">
@@ -25,7 +25,7 @@
                     
                     <div class="sub">
                         <h1 id = "temp">0°C</h1><br>
-                        <p id = "feels_like">Feels like 10°C</p>
+                        <p id = "feels_like">Feels like 10°<sup>C</sup></p>
                     </div>
 
                 </div>
@@ -36,21 +36,21 @@
                 
                 <div class="details">
                     <div class="col">
-                        <i class="fa-solid fa-droplet"></i>
+                        <i class="fa-solid fa-droplet fa-3x"></i>
                         <div>
                             <p id="humidity">50%</p>
                             <p>Humidity</p>
                         </div>
                     </div>
                     <div class="col">
-                        <i class="fa-sharp fa-solid fa-wind"></i>
+                        <i class="fa-sharp fa-solid fa-wind fa-3x"></i>
                         <div>
                             <p id="speed">15km/hr</p>
                             <p>Wind Speed</p>
                         </div>
                     </div>
                 </div>
-            </div>
+            
         </div>
     </div>
     
@@ -65,7 +65,7 @@
         const search = document.getElementById("search");
         const image = document.getElementById("icon");
         document.getElementById("icon").className="fa-solid fa-cloud";
-        const city = input.value;
+        
         async function getWeather(city){
             const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=289808d5c97ed37fff84a396e2a034c2`;
             const data = await fetch(`${url}`).then(response=>response.json());
@@ -101,10 +101,11 @@
                     image.className="fa-solid fa-smog";
             }
         }
-        const url = "https://api.openweathermap.org/data/2.5/weather?";
+
         search.addEventListener("click", ()=>{
             getWeather(input.value);
         });
+
     </script>
 </body>
 </html>

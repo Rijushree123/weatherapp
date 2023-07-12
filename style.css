@@ -84,10 +84,7 @@ body{
     flex-direction: column;
     margin-top: 10px;
 }
-.error img{
-    width:200px;
-    height: 200px;
-}
+
 @media screen and (max-width: 400px){
     .content{
         width:100%;

@@ -83,4 +83,7 @@ body{
         width:100%;
         max-width: 350px;
     }
+    .wrapper{
+    margin: 100px auto 0;
+    }
 }

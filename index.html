@@ -11,9 +11,16 @@
     <div class="wrapper">
         <div class="content">
             <div class="searchBar">
-                <input id="input" type="text" placeholder="Enter the city name" spellcheck="false"></input>
+                <input id="input" type="text" placeholder="Enter the city or state" spellcheck="false"></input>
                 <button id="search" class="fa-solid fa-magnifying-glass"></button>
             </div>
+
+            <div class="error">
+                <h3>City of State does not exists!!!</h3>
+                <img src="error.png">
+            </div>
+
+            <div class="weatherbody">
             
                 <div class="upper">
 
@@ -50,7 +57,7 @@
                         </div>
                     </div>
                 </div>
-            
+            </div>
         </div>
     </div>
     
@@ -64,12 +71,22 @@
         const input = document.querySelector("input");
         const search = document.getElementById("search");
         const image = document.getElementById("icon");
+        const weatherbody = document.querySelector('.weatherbody');
+        const error = document.querySelector('.error');
         document.getElementById("icon").className="fa-solid fa-cloud";
         
         async function getWeather(city){
             const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=289808d5c97ed37fff84a396e2a034c2`;
             const data = await fetch(`${url}`).then(response=>response.json());
             console.log(data);
+            if(data.cod===`404`){
+                console.log("error");
+                weatherbody.style.display = "none";
+                error.style.display="flex";
+                return;
+            }
+            error.style.display="none";
+            weatherbody.style.display = "block";
             temp.innerText=Math.round(data.main.temp-273.15)+"°C";
             place.innerText = data.name;
             desc.innerText=data.weather[0].description;
